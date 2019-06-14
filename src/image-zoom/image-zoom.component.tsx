@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import styles from './image-zoom.style';
 import { ICenterOn, Props, State } from './image-zoom.type';
+import ViewOverflow from 'react-native-view-overflow';
 
 export default class ImageViewer extends React.Component<Props, State> {
   public static defaultProps = new Props();
@@ -666,7 +667,7 @@ export default class ImageViewer extends React.Component<Props, State> {
         {...this.imagePanResponder!.panHandlers}
       >
         <Animated.View style={animateConf} renderToHardwareTextureAndroid>
-          <View
+          <ViewOverflow
             onLayout={this.handleLayout.bind(this)}
             style={{
               width: this.props.imageWidth,
@@ -674,7 +675,7 @@ export default class ImageViewer extends React.Component<Props, State> {
             }}
           >
             {this.props.children}
-          </View>
+          </ViewOverflow>
         </Animated.View>
       </View>
     );
